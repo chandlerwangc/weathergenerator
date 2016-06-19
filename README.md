@@ -16,7 +16,7 @@ Des: Bash program is to generate all cities weather information in one time.
 python WeatherGenerator.py [Location]
 
 # List of locations: 
-Adelaide, Peking, London, LosAngeles, Melbourne, Miami, Moscow, NewYork, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo
+Adelaide, Peking, London, Los_Angeles, Melbourne, Miami, Moscow, New_York, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo
 
 # Expected generated files description:
 1. city_locations.txt
