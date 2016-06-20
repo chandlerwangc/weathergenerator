@@ -21,12 +21,15 @@ from random import choice
 import random
 from time import sleep
 import pytz
+import string
 
 '''
 Function: Based on city name to generator lantitude & longtitude
 '''
 def do_geocode(geolocator,address):
-	try:	
+	try:
+		if "_" in address:
+			address = string.replace(address,'_',' ')
 		sleep(1)
 		return geolocator.geocode(address,timeout=None)
 	except GeocoderTimedOut:
@@ -44,17 +47,17 @@ if __name__=="__main__":
 	if len(sys.argv) != 2:
 		print ("The no. of arguments are not correct. Please verify.")
 		print ("Usage: python WeatherGenerator.py [Location]")
-		print ("List of locations: Adelaide, Peking, London, LosAngeles, Melbourne, Miami, Moscow, NewYork, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo")
+		print ("List of locations: Adelaide, Peking, London, Los_Angeles, Melbourne, Miami, Moscow, New_York, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo")
 		exit(1)
 
 	# List of locations, which can generate weather report
-	list_of_loc=['Adelaide', 'Peking', 'London', 'LosAngeles', 'Melbourne', 'Miami', 'Moscow', 'NewYork', 'Ottawa', 'Paris', 'Seoul', 'Shanghai', 'Shenzhen', 'Singapore', 'Sydney', 'Tokyo']
+	list_of_loc=['Adelaide', 'Peking', 'London', 'Los_Angeles', 'Melbourne', 'Miami', 'Moscow', 'New_York', 'Ottawa', 'Paris', 'Seoul', 'Shanghai', 'Shenzhen', 'Singapore', 'Sydney', 'Tokyo']
 	# Verify the city, which user input
 	city=sys.argv[1]
 	if not city in list_of_loc:
 		print ("%s is not recognized. Please choose from list of locations." %city)
 		print ("Usage: python WeatherGenerator.py [Location]")
-		print ("List of locations: Adelaide, Peking, London, LosAngeles, Melbourne, Miami, Moscow, NewYork, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo")
+		print ("List of locations: Adelaide, Peking, London, Los_Angeles, Melbourne, Miami, Moscow, New_York, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo")
 		exit(2)
 
 	# Get this python program full path to let use can program anywhere.
@@ -67,7 +70,7 @@ if __name__=="__main__":
 	''' 
 	# List of conditions
 	conditions=['Rain','Snow','Sunny','Cloudy','Windy']
-	# Range of temporature, simulate cold, warm and hot areas temporature ranges. Using dictionary.
+	# Range of temperature, simulate cold, warm and hot areas temperature ranges. Using dictionary.
 	range_tem={}
 	range_tem['cold']="-10,24"
 	range_tem['warm']="10,30"
@@ -77,11 +80,11 @@ if __name__=="__main__":
 	tem_loc['Adelaide']="hot"
 	tem_loc['Peking']="cold"
 	tem_loc['London']="cold"
-	tem_loc['LosAngeles']="warm"
+	tem_loc['Los_Angeles']="warm"
 	tem_loc['Melbourne']="cold"
 	tem_loc['Miami']="hot"
 	tem_loc['Moscow']="cold"
-	tem_loc['NewYork']="cold"
+	tem_loc['New_York']="cold"
 	tem_loc['Ottawa']="cold"
 	tem_loc['Paris']="warm"
 	tem_loc['Seoul']="cold"
@@ -99,11 +102,11 @@ if __name__=="__main__":
 	hum_loc['Adelaide']="seaside"
 	hum_loc['Peking']="notseaside"
 	hum_loc['London']="notseaside"
-	hum_loc['LosAngeles']="seaside"
+	hum_loc['Los_Angeles']="seaside"
 	hum_loc['Melbourne']="notseaside"
 	hum_loc['Miami']="seaside"
 	hum_loc['Moscow']="notseaside"
-	hum_loc['NewYork']="notseaside"
+	hum_loc['New_York']="notseaside"
 	hum_loc['Ottawa']="notseaside"
 	hum_loc['Paris']="notseaside"
 	hum_loc['Seoul']="notseaside"
@@ -123,11 +126,11 @@ if __name__=="__main__":
 	iata_loc['Adelaide']="ADL"
 	iata_loc['Peking']="BJS"
 	iata_loc['London']="LCY"
-	iata_loc['LosAngeles']="LAX"
+	iata_loc['Los_Angeles']="LAX"
 	iata_loc['Melbourne']="MEL"
 	iata_loc['Miami']="MIA"
 	iata_loc['Moscow']="MOW"
-	iata_loc['NewYork']="NYC"
+	iata_loc['New_York']="NYC"
 	iata_loc['Ottawa']="YOW"
 	iata_loc['Paris']="PAR"
 	iata_loc['Seoul']="SEL"
@@ -144,11 +147,11 @@ if __name__=="__main__":
 	tz_loc['Adelaide']="Australia/Adelaide"
 	tz_loc['Peking']="Etc/GMT+8"
 	tz_loc['London']="Etc/GMT+1"
-	tz_loc['LosAngeles']="America/Los_Angeles"
+	tz_loc['Los_Angeles']="America/Los_Angeles"
 	tz_loc['Melbourne']="Australia/Melbourne"
 	tz_loc['Miami']="Etc/GMT-4"
 	tz_loc['Moscow']="Etc/GMT+3"
-	tz_loc['NewYork']="America/New_York"
+	tz_loc['New_York']="America/New_York"
 	tz_loc['Ottawa']="Etc/GMT-4"
 	tz_loc['Paris']="Etc/GMT+2"
 	tz_loc['Seoul']="Etc/GMT+9"
@@ -219,11 +222,11 @@ if __name__=="__main__":
 	str_data = str_data + choice(conditions) + "|"
 
 	'''
-	Randomly get temporature
+	Randomly get temperature
 	'''
-	range_temporature = range_tem.get(tem_loc.get(city))
-	low_temp = int(range_temporature.split(',')[0])
-	high_temp = int(range_temporature.split(',')[1])
+	range_temperature = range_tem.get(tem_loc.get(city))
+	low_temp = int(range_temperature.split(',')[0])
+	high_temp = int(range_temperature.split(',')[1])
 	str_data = str_data + str(round(random.uniform(low_temp,high_temp),1)) + "|"
 
 	'''
