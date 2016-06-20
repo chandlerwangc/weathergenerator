@@ -1,7 +1,7 @@
 # WeatherGenerator
 Generate weather info for certain cities
 
-# Prerequisite:
+# Prerequisites:
 1. Python packages : GeoPy,Geocoder,pytz
 2. Good internet connections.
 
