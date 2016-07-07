@@ -4,8 +4,8 @@
 # Date:	17 June 2016
 # Author:	Wang Cheng
 # Func:	1. Consider local climate condition.
-#		2. Random generator reasonable weather information based on location.
-# 		3. Write generated info into a file using standard format.
+#	2. Randomly generate reasonable weather information based on location.
+# 	3. Write generated info into a file using standard format.
 # Usage: python WeatherGenerator.py [Location]
 # List of locations: Adelaide, Peking, London, LosAngeles, Melbourne, Miami, Moscow, NewYork, Ottawa, Paris, Seoul, Shanghai, Shenzhen, Singapore, Sydney, Tokyo
 ##################################################################################
