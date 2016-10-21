@@ -2,7 +2,7 @@
 # Local weather information generator
 # Ver:	0.1
 # Date:	17 June 2016
-# Author:	Wang Cheng
+# Author:
 # Func:	1. Consider local climate condition.
 #	2. Randomly generate reasonable weather information based on location.
 # 	3. Write generated info into a file using standard format.
